@@ -55,17 +55,17 @@ def main():
         print(conteudo)
         
 
-        #tweets = query_tweets(conteudo, lang=lang, begindate=begin_date, enddate=end_date)
+        tweets = query_tweets(conteudo, lang=lang, begindate=begin_date, enddate=end_date)
 
-        #data = pd.DataFrame(t.__dict__ for t in tweets)
+        data = pd.DataFrame(t.__dict__ for t in tweets)
         
-        #data.head()
-        #writer = pd.ExcelWrither('produtos.xlsx')
+        data.head()
+        writer = pd.ExcelWrither('tweets.xlsx')
 
-        #n_registros = len(data)
-        #download = data.to_csv('tweets.csv')
+        n_registros = len(data)
+        download = data.to_csv('tweets.csv')
         # , titles=produtos.columns.values
-        return flask.render_template('Scraping.html')#,download=download, tables=[data.to_html(classes='data')], n_registros=n_registros)  
+        return flask.render_template('Scraping.html' ,download=download, tables=[data.to_html(classes='data')], n_registros=n_registros)  
 
 if __name__ == '__main__':
     app.run(debug=True) #host='0.0.0.0' 
